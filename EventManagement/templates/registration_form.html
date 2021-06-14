@@ -1,0 +1,142 @@
+
+
+{% extends 'base.html' %}
+
+{%block title%}Home {% endblock title%}
+{%block body%}
+<style>
+body {font-family: Montserrat, sans-serif;}
+* {box-sizing: border-box}
+
+/* Full-width input fields */
+input[type=text], input[type=password], input[type=date], input[type=time], input[type=email]{
+  width: 80%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 5px;
+  background: #ffffff;
+}
+
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+
+/* Set a style for all buttons */
+button {
+  background-color: #FF2E63;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity:1;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  padding: 14px 20px;
+  background-color: #FF2E63;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn, .submitbtn {
+  float: left;
+  width: 50%;
+}
+
+/* Add padding to container elements */
+.container {
+  padding: 18px;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+  .cancelbtn, .signupbtn {
+     width: 100%;
+  }
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+</style>
+
+<form>
+  <div class="container">
+    <h2>Please fill in the following details</h2>
+    	
+	<div class="row">
+	<div class="column">
+	<table style="width:84%">
+	<tr>
+    <th><input type="text" placeholder="First Name" name="fname" required></th>
+	<th><input type="text" placeholder="Last Name" name="lname" required></th></tr></table>
+	<input type="text" placeholder="Phone No" name="phone no" required>
+	<input type="email" placeholder="Enter Email" name="email" required>
+	<input type="text" placeholder="Event Name" name="event name" required>
+	<input type="text" placeholder="Event Type" name="event type" list="event type" required>
+	<datalist id="event type">
+	<option value="type 1">
+    <option value="Type 2">
+    </datalist>
+	<input type="text" placeholder="Event Region" name="event region" list="event region" required>
+	<datalist id="event region" >
+	<option value="Maharashtra">
+    <option value="Karnataka">
+    </datalist>
+    <input type="text" placeholder="Event City" name="event city" list="event city" required>
+	<datalist id="event city">
+	<option value="Mumbai">
+    <option value="Bengaluru">
+    </datalist></div>
+	<div class="column">
+	<input type="text" placeholder="Event Location" name="event location" required>
+	
+	<input type="text" placeholder="Guest Limit" name="guest limit" required>
+	
+	<input type="date" placeholder="Event Date" name="event date" required>
+	<input type="time" placeholder="Event Time" name="event time" required>
+	<input type="text" placeholder="Entry Fee" name="Enter fee" required>
+	<input type="text" placeholder="Event Description" name="event description" required>
+
+    
+    <div class="clearfix" >
+      <button type="submit" class="submitbtn">HOST MY EVENT!</button>
+    </div></div></div>
+  </div>
+</form>
+{% endblock body%}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+
+
+
+</body>
+</html>
