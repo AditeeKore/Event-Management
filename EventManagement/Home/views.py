@@ -1,4 +1,6 @@
 from django.shortcuts import render, HttpResponse
+from datetime import datetime
+from Home.models import sign_up
 
 # Create your views here.
 def home(request):
@@ -18,6 +20,13 @@ def registration_form(request):
     #return HttpResponse('This is a registration_form page')
 
 def sign_up(request):
+    if request.method == "POST":
+        fname=request.POST.get('fname')
+        lname=request.POST.get('lname')
+        email=request.POST.get('email')
+        password=request.POST.get('password')
+        Signup= sign_up(fname= fname,lname=lname, email=email, password=password, date=datetime.today())
+        Signup.save()
     return render(request, 'sign_up.html')
     #return HttpResponse('This is a sign_up page')
 
