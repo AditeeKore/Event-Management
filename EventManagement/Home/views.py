@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse
 from datetime import datetime
-from Home.models import sign_up
+from Home.models import Signup
+from django.contrib import messages
 
 # Create your views here.
 def home(request):
@@ -25,8 +26,13 @@ def sign_up(request):
         lname=request.POST.get('lname')
         email=request.POST.get('email')
         password=request.POST.get('password')
-        Signup= sign_up(fname= fname,lname=lname, email=email, password=password, date=datetime.today())
-        Signup.save()
+
+        if Signup.objects.filter(email=email).exists():
+            print('Email already taken')
+        else:
+            sign_up=Signup(fname= fname,lname=lname, email=email, password=password, date=datetime.today())
+            sign_up.save()
+            messages.success(request, 'Congratulations!! Your have successfully signed up.')
     return render(request, 'sign_up.html')
     #return HttpResponse('This is a sign_up page')
 
