@@ -1,142 +1,65 @@
-
-
 {% extends 'base.html' %}
 
-{%block title%}Home {% endblock title%}
+{%block title%}Event Registration Form {% endblock title%}
 {%block body%}
-<style>
-body {font-family: Montserrat, sans-serif;}
-* {box-sizing: border-box}
 
-/* Full-width input fields */
-input[type=text], input[type=password], input[type=date], input[type=time], input[type=email]{
-  width: 80%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  display: inline-block;
-  border: 1px solid black;
-  border-radius: 5px;
-  background: #ffffff;
-}
+<div class="container-md p-4 mb-5 ms-5">
+  <form method="post" action="/registration_form">
+    {% csrf_token %}
+    <h3>Enter your details here</h3>
+    <div class="form-row">
+      <div class="form-group col-md-5">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+      </div>
+      <div class="form-group col-md-5">
+        <label for="phone">Phone No</label>
+        <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone No">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-5">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+      </div>
+      <div class="form-group col-md-5">
+        <label for="eventname">Event Name</label>
+        <input type="text" class="form-control" id="eventname" name="eventname" placeholder="Event Name">
+      </div>
+      <div class="form-group col-md-5">
+        <label for="eventtype">Event Type</label>
+        <input type="text" class="form-control" id="eventtype" name="eventtype" placeholder="Event Type">
+      </div>
+      <div class="form-group col-md-5">
+        <label for="eventlocation">Event Location</label>
+        <input type="text" class="form-control" id="eventlocation" name="eventlocation" placeholder="Event Location">
+      </div>
+      <div class="form-group col-md-5">
+        <label for="guestlimit">Guest Limit</label>
+        <input type="text" class="form-control" id="guestlimit" name="guestlimit" placeholder="Guest Limit">
+      </div>
+      <div class="form-group col-md-5">
+        <label for="date">Date</label>
+        <input type="date" class="form-control" id="date" name="date" placeholder="Date">
+      </div>
+      <div class="form-group col-md-5">
+        <label for="time">Time</label>
+        <input type="time" class="form-control" id="time" name="time" placeholder="Time">
+      </div>
+      <div class="form-group col-md-5">
+        <label for="fee">Entry Fee</label>
+        <input type="text" class="form-control" id="fee" name="fee" placeholder="Entry Fee">
+      </div>
+      <div class="form-group p-4 mb-5 ms-5">
+        <label for="exampleFormControlTextarea1">Event Discription</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="disc"></textarea>
+      </div>
+    </div>
+    <div class="text-center p-2">
+      <button type="submit" class="btn btn-primary">Register</button>
+  </form>
+</div>
+<div clas="padding-bottom">
+</div>
 
-
-input[type=text]:focus, input[type=password]:focus {
-  background-color: #ddd;
-  outline: none;
-}
-
-
-/* Set a style for all buttons */
-button {
-  background-color: #0dcaf0;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
-}
-
-button:hover {
-  opacity:1;
-}
-
-/* Extra styles for the cancel button */
-.cancelbtn {
-  padding: 14px 20px;
-  background-color: #FF2E63;
-}
-
-/* Float cancel and signup buttons and add an equal width */
-.cancelbtn, .submitbtn {
-  float: left;
-  width: 50%;
-}
-
-/* Add padding to container elements */
-.container {
-  padding: 18px;
-}
-
-/* Clear floats */
-.clearfix::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-/* Change styles for cancel button and signup button on extra small screens */
-@media screen and (max-width: 300px) {
-  .cancelbtn, .signupbtn {
-     width: 100%;
-  }
-}
-
-/* Create two equal columns that floats next to each other */
-.column {
-  float: left;
-  width: 50%;
-  padding: 10px;
-  height: 300px; /* Should be removed. Only for demonstration */
-}
-</style>
-
-<form>
-  <div class="container">
-    <h2>Please fill in the following details</h2>
-    	
-	<div class="row">
-	<div class="column">
-	<table style="width:84%">
-	<tr>
-    <th><input type="text" placeholder="First Name" name="fname" required></th>
-	<th><input type="text" placeholder="Last Name" name="lname" required></th></tr></table>
-	<input type="text" placeholder="Phone No" name="phone no" required>
-	<input type="email" placeholder="Enter Email" name="email" required>
-	<input type="text" placeholder="Event Name" name="event name" required>
-	<input type="text" placeholder="Event Type" name="event type" list="event type" required>
-	<datalist id="event type">
-	<option value="type 1">
-    <option value="Type 2">
-    </datalist>
-	<input type="text" placeholder="Event Region" name="event region" list="event region" required>
-	<datalist id="event region" >
-	<option value="Maharashtra">
-    <option value="Karnataka">
-    </datalist>
-    <input type="text" placeholder="Event City" name="event city" list="event city" required>
-	<datalist id="event city">
-	<option value="Mumbai">
-    <option value="Bengaluru">
-    </datalist></div>
-	<div class="column">
-	<input type="text" placeholder="Event Location" name="event location" required>
-	
-	<input type="text" placeholder="Guest Limit" name="guest limit" required>
-	
-	<input type="date" placeholder="Event Date" name="event date" required>
-	<input type="time" placeholder="Event Time" name="event time" required>
-	<input type="text" placeholder="Entry Fee" name="Enter fee" required>
-	<input type="text" placeholder="Event Description" name="event description" required>
-
-    
-    <div class="clearfix" >
-      <button type="submit" class="submitbtn">HOST MY EVENT!</button>
-    </div></div></div>
-  </div>
-</form>
 {% endblock body%}
-
-<!DOCTYPE html>
-<html>
-<head>
-
-</head>
-<body>
-
-
-
-</body>
-</html>

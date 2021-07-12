@@ -2,8 +2,19 @@
 
 {%block title%}Sign Up {% endblock title%}
 {%block body%}
+<div class="container">
+    {% block content %}
+    <br>
+<form method="POST">
+        {% csrf_token %}
+        {{form}}
+        <button style="background-color:#F4EB16; color:blue" class="btn btn-outline-info" type="submit">Sign Up</button>
+    </form>
 
-<div class="container-md p-4 mb-5 ms-5">
+    If you already have an account <a href="userlogin.html" target="blank"><strong>login</strong></a> instead.
+    {%endblock%}
+</div>
+{% comment %} <div class="container-md p-4 mb-5 ms-5">
 <form method="post" action="/sign_up">
 {% csrf_token %}
   <h3>Enter your details here</h3>
@@ -32,6 +43,6 @@
 </form>
 </div>
 <div clas="padding-bottom">
-</div>
+</div>  {% endcomment %}
 
 {% endblock body%}
